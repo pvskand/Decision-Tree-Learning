@@ -1,10 +1,7 @@
-
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
 
 
 public class decision {
@@ -44,10 +41,7 @@ public class decision {
 				}
 				else{
 					if(counter==3)
-						{
-							array=new int[n][m+1];
-							//testset=new int[1000][m+1];
-						}
+						array=new int[n][m+1];
 					String []different=new String[m+1];
 					different=line.split("	");
 					for(i=0;i<=m;i++)
@@ -65,7 +59,7 @@ public class decision {
 			//System.out.println(n+"  "+m+" "+array[0][79]);
 			for(j=0;j<m+1;j++)
 			{
-				System.out.print(array[0][j]+" ");
+				System.out.print(array[0][j]);
 			}
 		}
 		random();
@@ -76,20 +70,12 @@ public class decision {
 	private void random() {
 		// TODO Auto-generated method stub
 		int i=0;
-		ArrayList<Integer> num=new ArrayList<Integer>();
-		
+		int []num=new int[n];
 		for(i=0;i<n;i++)
 		{
-			num.add(i);
+			
 		}
-		Collections.shuffle(num);
-		 System.out.println();
-		 for (i=0; i<1000; i++) {
-	            testset[i]=num.get(i);
-	        }
-		//System.out.println(testset[0]+"  "+num.get(i)+" "+num.get(1000));
 		
 	}
 
 }
-
