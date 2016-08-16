@@ -11,28 +11,21 @@ public class decision {
 
 	int n=0,m=0;
 	int [][]array;
-	int []testset=new int[1000];
-	/**
-	 * @param args
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
-	 */
+	int []trainingSet = new int[1000];
 	public static void main(String[] args) throws FileNotFoundException, IOException {
-		// TODO Auto-generated method stub
+
 		decision obj=new decision();
 		obj.input();
 	}
 
-	private void input() throws FileNotFoundException, IOException {
-		// TODO Auto-generated method stub
+	public void input() throws FileNotFoundException, IOException {
+
 		int counter=0,i=0,j=0;
 		try(BufferedReader br = new BufferedReader(new FileReader("ticdata2000.txt"))) 
 		{
 			String line = br.readLine();
 
 			while (line != null) {
-				//sb.append(line);
-				//sb.append(System.lineSeparator());
 				counter++;
 				if(counter==1)
 				{
@@ -46,7 +39,6 @@ public class decision {
 					if(counter==3)
 						{
 							array=new int[n][m+1];
-							//testset=new int[1000][m+1];
 						}
 					String []different=new String[m+1];
 					different=line.split("	");
@@ -54,15 +46,11 @@ public class decision {
 					{
 						array[j][i]=Integer.parseInt(different[i]);
 					}
-					//if(counter==3)
-					//System.out.println(array[0][0]);
-
 					j++;
 				}
 
 				line = br.readLine();
 			}
-			//System.out.println(n+"  "+m+" "+array[0][79]);
 			for(j=0;j<m+1;j++)
 			{
 				System.out.print(array[0][j]+" ");
@@ -73,8 +61,8 @@ public class decision {
 	}
 	
 
-	private void random() {
-		// TODO Auto-generated method stub
+	public void random() {
+		// Picks 1000 random Instances
 		int i=0;
 		ArrayList<Integer> num=new ArrayList<Integer>();
 		
@@ -85,11 +73,34 @@ public class decision {
 		Collections.shuffle(num);
 		 System.out.println();
 		 for (i=0; i<1000; i++) {
-	            testset[i]=num.get(i);
+	            trainingSet[i]=num.get(i);
 	        }
-		//System.out.println(testset[0]+"  "+num.get(i)+" "+num.get(1000));
 		
 	}
+	
+	public double entropy(int [] attributesArray, int size, int [][]array)
+	{
+		int nPos=0, nNeg=0;
+		for(int i=0;i<size;i++)
+		{
+			
+			if(attributesArray[i] == -1)
+				continue;
+			else 
+			{
+			if(attributesArray[i]!=-1 && array[i][85]==1 )
+				nPos++;
+			else if(attributesArray[i]!=-1 && array[i][85]==0)
+				nNeg++;
+			}
+		}
+		double pPos = nPos/size;
+		double pNeg = nNeg/size;
+		float entropy = (float) (-pPos*(Math.log(pPos)/Math.log(2))) - (float) (pNeg*(Math.log(pNeg)/Math.log(2)));
+		return entropy;
 
+	}
 }
+
+	
 
