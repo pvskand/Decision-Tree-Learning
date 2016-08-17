@@ -102,28 +102,7 @@ public class decision {
 
 	}
 
-	public double entropy(int [] attributesArray, int size, int [][]array)
-	{
-		int nPos=0, nNeg=0;
-		for(int i=0;i<size;i++)
-		{
 
-			if(attributesArray[i] == -1)
-				continue;
-			else 
-			{
-				if(attributesArray[i]!=-1 && array[i][85]==1 )
-					nPos++;
-				else if(attributesArray[i]!=-1 && array[i][85]==0)
-					nNeg++;
-			}
-		}
-		double pPos = nPos/size;
-		double pNeg = nNeg/size;
-		float entropy = (float) (-pPos*(Math.log(pPos)/Math.log(2))) - (float) (pNeg*(Math.log(pNeg)/Math.log(2)));
-		return entropy;
-
-	}
 }
 
 
