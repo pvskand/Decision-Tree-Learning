@@ -15,20 +15,16 @@ public class decision {
 	int n=0,m=0; /*m = 85 (attributes) & n = number of rows*/
 	int [][]array;
 	int []trainingSet = new int[1000];
-<<<<<<< HEAD
+
 	int []attributeArray = new int[85];
-=======
-	
->>>>>>> b0924839fdd61e29fe3020c8964ad3619ba9245c
+
 	public static void main(String[] args) throws FileNotFoundException, IOException {
 
 		decision obj=new decision();
 		obj.input();
-		for(int i=0;i<obj.m;i++)
-			obj.attributeArray[i] = i;
+
+
 		
-		double Entropy = obj.entropy(obj.attributeArray, obj.m);
-		System.out.println(Entropy + " Entropy");
 		
 		
 		
@@ -95,11 +91,9 @@ public class decision {
 		}
 		Collections.shuffle(one);
 		
-<<<<<<< HEAD
-	}
+
 	
-	
-=======
+
 		for (i=0; i<p; i++) {
 			trainingSet[i]=one.get(i);
 		}
@@ -122,7 +116,6 @@ public class decision {
 	}
 
 
->>>>>>> b0924839fdd61e29fe3020c8964ad3619ba9245c
 }
 
 
