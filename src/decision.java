@@ -6,16 +6,27 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import com.sun.xml.internal.ws.api.message.Attachment;
+
 
 public class decision {
 
-	int n=0,m=0;
+	int n=0,m=0; /*m = 85 (attributes) & n = number of rows*/
 	int [][]array;
 	int []trainingSet = new int[1000];
+	int []attributeArray = new int[85];
 	public static void main(String[] args) throws FileNotFoundException, IOException {
 
 		decision obj=new decision();
 		obj.input();
+		for(int i=0;i<obj.m;i++)
+			obj.attributeArray[i] = i;
+		
+		double Entropy = obj.entropy(obj.attributeArray, obj.m);
+		System.out.println(Entropy + " Entropy");
+		
+		
+		
 	}
 
 	public void input() throws FileNotFoundException, IOException {
@@ -78,28 +89,7 @@ public class decision {
 		
 	}
 	
-	public double entropy(int [] attributesArray, int size, int [][]array)
-	{
-		int nPos=0, nNeg=0;
-		for(int i=0;i<size;i++)
-		{
-			
-			if(attributesArray[i] == -1)
-				continue;
-			else 
-			{
-			if(attributesArray[i]!=-1 && array[i][85]==1 )
-				nPos++;
-			else if(attributesArray[i]!=-1 && array[i][85]==0)
-				nNeg++;
-			}
-		}
-		double pPos = nPos/size;
-		double pNeg = nNeg/size;
-		float entropy = (float) (-pPos*(Math.log(pPos)/Math.log(2))) - (float) (pNeg*(Math.log(pNeg)/Math.log(2)));
-		return entropy;
-
-	}
+	
 }
 
 	
