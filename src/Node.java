@@ -4,16 +4,15 @@ public class Node {
 
 	int attributeNumber;
 	int size;
-	int positiveClassLabels;
-	int negativeClassLabels;
+	int []positiveClassLabels;
+	int []negativeClassLabels;
 	int depth;
 	double entropy;
-	int []instances;
 	Node []childList;
 	Node parent;
 	
 
-	public Node (int attributeNumber, int size, int positiveClassLabels, int negativeClassLabels,int depth,double entropy,int []instances,  Node []childList, Node parent)
+	public Node (int attributeNumber, int size, int []positiveClassLabels, int []negativeClassLabels,int depth,double entropy,  Node []childList, Node parent)
 	{
 		this.attributeNumber = attributeNumber;
 		this.size = size;
@@ -23,13 +22,12 @@ public class Node {
 		this.depth = depth;
 		this.parent = parent;	
 		this.entropy=setEntropy();
-		this.instances=instances;
 	}
 	public double setEntropy()
 	{
-		int size=positiveClassLabels+negativeClassLabels;
-		double pPos = positiveClassLabels/(double)size;
-		double pNeg = negativeClassLabels/(double)size;
+		int size=positiveClassLabels.length+negativeClassLabels.length;
+		double pPos = positiveClassLabels.length/(double)size;
+		double pNeg = negativeClassLabels.length/(double)size;
 		entropy = (float)(-pPos*(Math.log(pPos)/Math.log(2)))-(float) (pNeg*(Math.log(pNeg)/Math.log(2)));
 		return entropy;
 	}
