@@ -11,23 +11,45 @@ import java.util.Collections;
 public class decision {
 
 	int n=0,m=0;
-	int npos,nneg;
+	int npos, nneg;
+	int ipos=0,ineg=0;
 	int [][]array;
 	int []trainingSet = new int[1000];
 	Node head=null;
 	int []attributes;
-
+	int [] nPos;
+	int [] nNeg;
+	int [] validInstance = new int[1000];
 	public static void main(String[] args) throws FileNotFoundException, IOException {
 
 		int i;
 		decision obj=new decision();
 		obj.input();	//input function
-
-		obj.head=new Node(0,0,obj.npos,obj.nneg,0,0,null,null,null);
-
-		obj.head.instances=new int[1000];
+		obj.nPos = new int[obj.npos];
+		obj.nNeg = new int[obj.nneg];
+		/*Storing the positive and negative class instances*/
 		for(i=0;i<1000;i++)
-			obj.head.instances[i]=1;
+		{
+			if(obj.array[obj.trainingSet[i]][85]==1)
+			{
+				obj.nPos[obj.ipos] = i;
+				obj.ipos++;
+			}
+			else
+			{
+				obj.nNeg[obj.ineg] = i;
+				obj.ineg++;
+			}
+			
+			
+		} /* Checked! Its working :)*/
+		
+		
+		obj.head=new Node(0,0,obj.nPos,obj.nNeg,0,0,null,null);
+
+		for(i=0;i<1000;i++)
+			obj.validInstance[i]=1;
+		
 		obj.attributes=new int[obj.m];
 		//System.out.println("npos="+obj.npos+"nneg="+obj.nneg);
 		//System.out.println(obj.head.entropy);
@@ -36,7 +58,7 @@ public class decision {
 
 
 	private void tree(Node current) {
-		// TODO Auto-generated method stub
+		
 		int i=0;
 		double infogain=0,maxinfogain=0;
 		for(i=0;i<1;i++)
@@ -55,7 +77,7 @@ public class decision {
 
 
 	private double calcinfogain(int attributeno,Node current) {
-		// TODO Auto-generated method stub
+
 		int i,j,min=array[0][attributeno],max=array[0][attributeno];
 		for(i=0;i<n;i++)
 		{
