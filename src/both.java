@@ -1,11 +1,12 @@
-
+	/*A class to store the +ve and -ve class labels*/
     public class both
     {
-   	 public int posi;
-   	 public int negi;
+   	 public int posi;	// +ve label
+   	 public int negi;	// -ve label
+   	 /*Constructor*/
    	 both()
    	 {
-   		 this.posi=0;
-   		 this.negi=0;
+   		 this.posi=0;	// initially 0
+   		 this.negi=0;   // initially 0
    	 }
     }
